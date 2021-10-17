@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "2ed54757-869d-45c1-a58f-5ae589bbf51a": {
+      "ProjectGuid": "2ed54757-869d-45c1-a58f-5ae589bbf51a",
+      "DisplayName": "Backend.WebApi",
+      "ColorIndex": 0
+    }
+  },
+  "NextColorIndex": 1
+}
