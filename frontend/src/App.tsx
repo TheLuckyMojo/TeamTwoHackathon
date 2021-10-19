@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
 import ReactDOM from 'react-dom';
-import { Button } from '@mui/material';
+import { Button, TextField } from '@mui/material';
 
 class NameForm extends React.Component <any, any> {
   constructor(props: any) {
@@ -12,32 +12,20 @@ class NameForm extends React.Component <any, any> {
     };
 
     this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   handleChange(event: any) {
     this.setState({value: event.target.value});
   }
 
-  handleSubmit(event: any) {
-    alert(this.state.targets + ' targets and ' + this.state.attackers + ' attackers');
-    event.preventDefault();
-  }
-
   render() {
     return (
-      <form onSubmit={this.handleSubmit}>
-        <label>
-          Number of targets:
-          <input type="text" value={this.state.targets} onChange={this.handleChange} />
-        </label>
+      <form>
+        <TextField id="outlined-basic" label="Number of targets:" variant="outlined" margin="normal" value={this.state.targets} onChange={this.handleChange}/>
         <br/>
-        <label>
-          Number of attackers:
-          <input type="text" value={this.state.attackers} onChange={this.handleChange} />
-        </label>
+        <TextField id="outlined-basic" label="Number of attackers:" variant="outlined" margin="normal" value={this.state.attackers} onChange={this.handleChange}/>
         <br/>
-        <input type="submit" value="Submit" />
+        <Button variant="contained" onClick={() => {alert(this.state.targets + ' targets and ' + this.state.attackers + ' attackers')}}>Submit</Button>
       </form>
     );
   }
