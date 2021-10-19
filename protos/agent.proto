@@ -1,0 +1,21 @@
+syntax = "proto3";
+
+package agent;
+
+// Interface for talking to the trained agent.
+service Agent {
+  // Gets a new plan from the agent.
+  rpc GetPlan(OperatingPicture) returns (Plan) {}
+}
+
+// Observation space for the agent.
+message OperatingPicture {
+  // Number of missiles to potentially allocate.
+  int32 numMissiles = 1;
+}
+
+// Generated plan.
+message Plan {
+  // Damage assessment of targets.
+  repeated int32 targetDamageAssessment = 1;
+}
