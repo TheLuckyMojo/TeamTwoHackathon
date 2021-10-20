@@ -29,7 +29,7 @@ There's extra proto files and Go plugins you have to setup to also be able to ge
     ```
 1. From another terminal, run grpcurl with JSON inputs of choice against the RPC call you want to hit, and wait for response:
     ```
-    grpcurl -plaintext -d '{\"numMissiles\": 50}' localhost:50051 agent.Agent/GetPlan
+    grpcurl -plaintext -d @ localhost:50051 agent.Agent/GetPlanAssessment < ./test-data/getPlanAssessmentRequest.json
     ```
 
-There's other grpcurl commands you can use to list all available methods from a server, pass in the JSON from a file, etc, but this so far is quickest way to sanity check the server by itself.
+There's other grpcurl commands you can use to list all available methods from a server, etc, but this so far is quickest way to sanity check the server by itself.
