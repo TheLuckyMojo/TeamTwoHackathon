@@ -2,16 +2,31 @@ import grpc;
 from grpc_reflection.v1alpha import reflection
 from concurrent import futures;
 
+from stable_baselines3 import PPO
+
 import agent_pb2;
 import agent_pb2_grpc;
 
+import agent_data_converter;
+import agent_model_driver;
+
 class AgentServicer(agent_pb2_grpc.AgentServicer):
-    def GetPlan(self, request, context):
-        """Gets a new plan from the agent.
-        """
-        print(request.numMissiles)
-        return agent_pb2.Plan(targetDamageAssessment=[0,0,0,0,0,0,0])
-        
+    def __init__(self):
+        # The zip contains the brains.
+        # It can take a little while to load this, so do once on startup.
+        self.model = PPO.load('../../sandbox/rLPython/PPO')
+
+    def GetPlanAssessment(self, request, context):
+        scenarioEnv = agent_data_converter.OperatingPictureToScenarioEnvironment(request)
+
+        targetIds = []
+        for entry in request.targetIdToDamage.entries:
+            targetIds.append(entry.id)
+        prediction = agent_model_driver.GeneratePrediction(self.model, scenarioEnv)
+
+        planAssessment = agent_data_converter.PredictionToPlanAssessment(prediction, targetIds)
+        return planAssessment
+
 def main():
     server = grpc.server(futures.ThreadPoolExecutor(max_workers=10))
     agent_pb2_grpc.add_AgentServicer_to_server(
