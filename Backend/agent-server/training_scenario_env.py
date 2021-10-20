@@ -3,7 +3,7 @@ from gym.spaces import Discrete, MultiDiscrete
 import numpy as np
 import random
 
-import ScenarioStepper
+from scenario_stepper import ScenarioStepper
 
 class TrainingScenarioEnv(Env):
     def __init__(self):

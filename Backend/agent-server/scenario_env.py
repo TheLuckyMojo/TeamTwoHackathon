@@ -2,7 +2,7 @@ from gym import Env
 from gym.spaces import Discrete, MultiDiscrete 
 import numpy as np
 
-import ScenarioStepper
+from scenario_stepper import ScenarioStepper
 
 class ScenarioEnv(Env):
     def __init__(self, numberOfMissles, tD1, tD2, tD3, tD4, tD5, tD6):
