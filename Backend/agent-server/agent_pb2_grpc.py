@@ -15,10 +15,10 @@ class AgentStub(object):
         Args:
             channel: A grpc.Channel.
         """
-        self.GetPlan = channel.unary_unary(
-                '/agent.Agent/GetPlan',
+        self.GetPlanAssessment = channel.unary_unary(
+                '/agent.Agent/GetPlanAssessment',
                 request_serializer=agent__pb2.OperatingPicture.SerializeToString,
-                response_deserializer=agent__pb2.Plan.FromString,
+                response_deserializer=agent__pb2.PlanAssessment.FromString,
                 )
 
 
@@ -26,8 +26,8 @@ class AgentServicer(object):
     """Interface for talking to the trained agent.
     """
 
-    def GetPlan(self, request, context):
-        """Gets a new plan from the agent.
+    def GetPlanAssessment(self, request, context):
+        """Gets a new plan/assessment from the agent.
         """
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
@@ -36,10 +36,10 @@ class AgentServicer(object):
 
 def add_AgentServicer_to_server(servicer, server):
     rpc_method_handlers = {
-            'GetPlan': grpc.unary_unary_rpc_method_handler(
-                    servicer.GetPlan,
+            'GetPlanAssessment': grpc.unary_unary_rpc_method_handler(
+                    servicer.GetPlanAssessment,
                     request_deserializer=agent__pb2.OperatingPicture.FromString,
-                    response_serializer=agent__pb2.Plan.SerializeToString,
+                    response_serializer=agent__pb2.PlanAssessment.SerializeToString,
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
@@ -53,7 +53,7 @@ class Agent(object):
     """
 
     @staticmethod
-    def GetPlan(request,
+    def GetPlanAssessment(request,
             target,
             options=(),
             channel_credentials=None,
@@ -63,8 +63,8 @@ class Agent(object):
             wait_for_ready=None,
             timeout=None,
             metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/agent.Agent/GetPlan',
+        return grpc.experimental.unary_unary(request, target, '/agent.Agent/GetPlanAssessment',
             agent__pb2.OperatingPicture.SerializeToString,
-            agent__pb2.Plan.FromString,
+            agent__pb2.PlanAssessment.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)

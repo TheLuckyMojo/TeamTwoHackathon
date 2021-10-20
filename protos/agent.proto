@@ -4,18 +4,32 @@ package agent;
 
 // Interface for talking to the trained agent.
 service Agent {
-  // Gets a new plan from the agent.
-  rpc GetPlan(OperatingPicture) returns (Plan) {}
+  // Gets a new plan/assessment from the agent.
+  rpc GetPlanAssessment(OperatingPicture) returns (PlanAssessment) {}
 }
 
-// Observation space for the agent.
+// Operating context for the agent to consider.
 message OperatingPicture {
   // Number of missiles to potentially allocate.
   int32 numMissiles = 1;
+  // Target ID to corresponding desired damage outcome.
+  map<string, int32> targetIdToDamage = 2;
 }
 
-// Generated plan.
-message Plan {
-  // Damage assessment of targets.
-  repeated int32 targetDamageAssessment = 1;
+// Generated overall plan/assessment.
+message PlanAssessment {
+  // List of actions and their assessments taken.
+  repeated ActionAssessment actionAssessments = 1;
+}
+
+// Individual predicted action and assessment.
+message ActionAssessment {
+  // ID of the target the action was taken against.
+  string actionTargetId = 1;
+  // Number of missiles at this action interval.
+  int32 numMissilesLeft = 2;
+  // Target ID to corresponding damage at this action interval.
+  map<string, int32> targetIdToCurrentDamage = 3;
+  // Target ID to corresponding desired damage outcome.
+  map<string, int32> targetIdToDesiredDamage = 4;
 }
