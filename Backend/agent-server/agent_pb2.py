@@ -19,49 +19,11 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   syntax='proto3',
   serialized_options=None,
   create_key=_descriptor._internal_create_key,
-  serialized_pb=b'\n\x0b\x61gent.proto\x12\x05\x61gent\"\xa9\x01\n\x10OperatingPicture\x12\x13\n\x0bnumMissiles\x18\x01 \x01(\x05\x12G\n\x10targetIdToDamage\x18\x02 \x03(\x0b\x32-.agent.OperatingPicture.TargetIdToDamageEntry\x1a\x37\n\x15TargetIdToDamageEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\x05:\x02\x38\x01\"D\n\x0ePlanAssessment\x12\x32\n\x11\x61\x63tionAssessments\x18\x01 \x03(\x0b\x32\x17.agent.ActionAssessment\"\xf1\x02\n\x10\x41\x63tionAssessment\x12\x16\n\x0e\x61\x63tionTargetId\x18\x01 \x01(\t\x12\x17\n\x0fnumMissilesLeft\x18\x02 \x01(\x05\x12U\n\x17targetIdToCurrentDamage\x18\x03 \x03(\x0b\x32\x34.agent.ActionAssessment.TargetIdToCurrentDamageEntry\x12U\n\x17targetIdToDesiredDamage\x18\x04 \x03(\x0b\x32\x34.agent.ActionAssessment.TargetIdToDesiredDamageEntry\x1a>\n\x1cTargetIdToCurrentDamageEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\x05:\x02\x38\x01\x1a>\n\x1cTargetIdToDesiredDamageEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\x05:\x02\x38\x01\x32N\n\x05\x41gent\x12\x45\n\x11GetPlanAssessment\x12\x17.agent.OperatingPicture\x1a\x15.agent.PlanAssessment\"\x00\x62\x06proto3'
+  serialized_pb=b'\n\x0b\x61gent.proto\x12\x05\x61gent\"[\n\x10OperatingPicture\x12\x13\n\x0bnumMissiles\x18\x01 \x01(\x05\x12\x32\n\x10targetIdToDamage\x18\x02 \x01(\x0b\x32\x18.agent.TargetToDamageMap\"3\n\x15TargetIdToDamageEntry\x12\n\n\x02id\x18\x01 \x01(\t\x12\x0e\n\x06\x64\x61mage\x18\x02 \x01(\x05\"B\n\x11TargetToDamageMap\x12-\n\x07\x65ntries\x18\x01 \x03(\x0b\x32\x1c.agent.TargetIdToDamageEntry\"D\n\x0ePlanAssessment\x12\x32\n\x11\x61\x63tionAssessments\x18\x01 \x03(\x0b\x32\x17.agent.ActionAssessment\"\xb9\x01\n\x10\x41\x63tionAssessment\x12\x16\n\x0e\x61\x63tionTargetId\x18\x01 \x01(\t\x12\x17\n\x0fnumMissilesLeft\x18\x02 \x01(\x05\x12\x39\n\x17targetIdToCurrentDamage\x18\x03 \x01(\x0b\x32\x18.agent.TargetToDamageMap\x12\x39\n\x17targetIdToDesiredDamage\x18\x04 \x01(\x0b\x32\x18.agent.TargetToDamageMap2N\n\x05\x41gent\x12\x45\n\x11GetPlanAssessment\x12\x17.agent.OperatingPicture\x1a\x15.agent.PlanAssessment\"\x00\x62\x06proto3'
 )
 
 
 
-
-_OPERATINGPICTURE_TARGETIDTODAMAGEENTRY = _descriptor.Descriptor(
-  name='TargetIdToDamageEntry',
-  full_name='agent.OperatingPicture.TargetIdToDamageEntry',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  create_key=_descriptor._internal_create_key,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='key', full_name='agent.OperatingPicture.TargetIdToDamageEntry.key', index=0,
-      number=1, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=b"".decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='value', full_name='agent.OperatingPicture.TargetIdToDamageEntry.value', index=1,
-      number=2, type=5, cpp_type=1, label=1,
-      has_default_value=False, default_value=0,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  serialized_options=b'8\001',
-  is_extendable=False,
-  syntax='proto3',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=137,
-  serialized_end=192,
-)
 
 _OPERATINGPICTURE = _descriptor.Descriptor(
   name='OperatingPicture',
@@ -80,15 +42,15 @@ _OPERATINGPICTURE = _descriptor.Descriptor(
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='targetIdToDamage', full_name='agent.OperatingPicture.targetIdToDamage', index=1,
-      number=2, type=11, cpp_type=10, label=3,
-      has_default_value=False, default_value=[],
+      number=2, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
   ],
   extensions=[
   ],
-  nested_types=[_OPERATINGPICTURE_TARGETIDTODAMAGEENTRY, ],
+  nested_types=[],
   enum_types=[
   ],
   serialized_options=None,
@@ -97,8 +59,79 @@ _OPERATINGPICTURE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=23,
-  serialized_end=192,
+  serialized_start=22,
+  serialized_end=113,
+)
+
+
+_TARGETIDTODAMAGEENTRY = _descriptor.Descriptor(
+  name='TargetIdToDamageEntry',
+  full_name='agent.TargetIdToDamageEntry',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='id', full_name='agent.TargetIdToDamageEntry.id', index=0,
+      number=1, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='damage', full_name='agent.TargetIdToDamageEntry.damage', index=1,
+      number=2, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=115,
+  serialized_end=166,
+)
+
+
+_TARGETTODAMAGEMAP = _descriptor.Descriptor(
+  name='TargetToDamageMap',
+  full_name='agent.TargetToDamageMap',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='entries', full_name='agent.TargetToDamageMap.entries', index=0,
+      number=1, type=11, cpp_type=10, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=168,
+  serialized_end=234,
 )
 
 
@@ -129,86 +162,10 @@ _PLANASSESSMENT = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=194,
-  serialized_end=262,
+  serialized_start=236,
+  serialized_end=304,
 )
 
-
-_ACTIONASSESSMENT_TARGETIDTOCURRENTDAMAGEENTRY = _descriptor.Descriptor(
-  name='TargetIdToCurrentDamageEntry',
-  full_name='agent.ActionAssessment.TargetIdToCurrentDamageEntry',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  create_key=_descriptor._internal_create_key,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='key', full_name='agent.ActionAssessment.TargetIdToCurrentDamageEntry.key', index=0,
-      number=1, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=b"".decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='value', full_name='agent.ActionAssessment.TargetIdToCurrentDamageEntry.value', index=1,
-      number=2, type=5, cpp_type=1, label=1,
-      has_default_value=False, default_value=0,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  serialized_options=b'8\001',
-  is_extendable=False,
-  syntax='proto3',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=508,
-  serialized_end=570,
-)
-
-_ACTIONASSESSMENT_TARGETIDTODESIREDDAMAGEENTRY = _descriptor.Descriptor(
-  name='TargetIdToDesiredDamageEntry',
-  full_name='agent.ActionAssessment.TargetIdToDesiredDamageEntry',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  create_key=_descriptor._internal_create_key,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='key', full_name='agent.ActionAssessment.TargetIdToDesiredDamageEntry.key', index=0,
-      number=1, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=b"".decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='value', full_name='agent.ActionAssessment.TargetIdToDesiredDamageEntry.value', index=1,
-      number=2, type=5, cpp_type=1, label=1,
-      has_default_value=False, default_value=0,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  serialized_options=b'8\001',
-  is_extendable=False,
-  syntax='proto3',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=572,
-  serialized_end=634,
-)
 
 _ACTIONASSESSMENT = _descriptor.Descriptor(
   name='ActionAssessment',
@@ -234,22 +191,22 @@ _ACTIONASSESSMENT = _descriptor.Descriptor(
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='targetIdToCurrentDamage', full_name='agent.ActionAssessment.targetIdToCurrentDamage', index=2,
-      number=3, type=11, cpp_type=10, label=3,
-      has_default_value=False, default_value=[],
+      number=3, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='targetIdToDesiredDamage', full_name='agent.ActionAssessment.targetIdToDesiredDamage', index=3,
-      number=4, type=11, cpp_type=10, label=3,
-      has_default_value=False, default_value=[],
+      number=4, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
   ],
   extensions=[
   ],
-  nested_types=[_ACTIONASSESSMENT_TARGETIDTOCURRENTDAMAGEENTRY, _ACTIONASSESSMENT_TARGETIDTODESIREDDAMAGEENTRY, ],
+  nested_types=[],
   enum_types=[
   ],
   serialized_options=None,
@@ -258,36 +215,42 @@ _ACTIONASSESSMENT = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=265,
-  serialized_end=634,
+  serialized_start=307,
+  serialized_end=492,
 )
 
-_OPERATINGPICTURE_TARGETIDTODAMAGEENTRY.containing_type = _OPERATINGPICTURE
-_OPERATINGPICTURE.fields_by_name['targetIdToDamage'].message_type = _OPERATINGPICTURE_TARGETIDTODAMAGEENTRY
+_OPERATINGPICTURE.fields_by_name['targetIdToDamage'].message_type = _TARGETTODAMAGEMAP
+_TARGETTODAMAGEMAP.fields_by_name['entries'].message_type = _TARGETIDTODAMAGEENTRY
 _PLANASSESSMENT.fields_by_name['actionAssessments'].message_type = _ACTIONASSESSMENT
-_ACTIONASSESSMENT_TARGETIDTOCURRENTDAMAGEENTRY.containing_type = _ACTIONASSESSMENT
-_ACTIONASSESSMENT_TARGETIDTODESIREDDAMAGEENTRY.containing_type = _ACTIONASSESSMENT
-_ACTIONASSESSMENT.fields_by_name['targetIdToCurrentDamage'].message_type = _ACTIONASSESSMENT_TARGETIDTOCURRENTDAMAGEENTRY
-_ACTIONASSESSMENT.fields_by_name['targetIdToDesiredDamage'].message_type = _ACTIONASSESSMENT_TARGETIDTODESIREDDAMAGEENTRY
+_ACTIONASSESSMENT.fields_by_name['targetIdToCurrentDamage'].message_type = _TARGETTODAMAGEMAP
+_ACTIONASSESSMENT.fields_by_name['targetIdToDesiredDamage'].message_type = _TARGETTODAMAGEMAP
 DESCRIPTOR.message_types_by_name['OperatingPicture'] = _OPERATINGPICTURE
+DESCRIPTOR.message_types_by_name['TargetIdToDamageEntry'] = _TARGETIDTODAMAGEENTRY
+DESCRIPTOR.message_types_by_name['TargetToDamageMap'] = _TARGETTODAMAGEMAP
 DESCRIPTOR.message_types_by_name['PlanAssessment'] = _PLANASSESSMENT
 DESCRIPTOR.message_types_by_name['ActionAssessment'] = _ACTIONASSESSMENT
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
 OperatingPicture = _reflection.GeneratedProtocolMessageType('OperatingPicture', (_message.Message,), {
-
-  'TargetIdToDamageEntry' : _reflection.GeneratedProtocolMessageType('TargetIdToDamageEntry', (_message.Message,), {
-    'DESCRIPTOR' : _OPERATINGPICTURE_TARGETIDTODAMAGEENTRY,
-    '__module__' : 'agent_pb2'
-    # @@protoc_insertion_point(class_scope:agent.OperatingPicture.TargetIdToDamageEntry)
-    })
-  ,
   'DESCRIPTOR' : _OPERATINGPICTURE,
   '__module__' : 'agent_pb2'
   # @@protoc_insertion_point(class_scope:agent.OperatingPicture)
   })
 _sym_db.RegisterMessage(OperatingPicture)
-_sym_db.RegisterMessage(OperatingPicture.TargetIdToDamageEntry)
+
+TargetIdToDamageEntry = _reflection.GeneratedProtocolMessageType('TargetIdToDamageEntry', (_message.Message,), {
+  'DESCRIPTOR' : _TARGETIDTODAMAGEENTRY,
+  '__module__' : 'agent_pb2'
+  # @@protoc_insertion_point(class_scope:agent.TargetIdToDamageEntry)
+  })
+_sym_db.RegisterMessage(TargetIdToDamageEntry)
+
+TargetToDamageMap = _reflection.GeneratedProtocolMessageType('TargetToDamageMap', (_message.Message,), {
+  'DESCRIPTOR' : _TARGETTODAMAGEMAP,
+  '__module__' : 'agent_pb2'
+  # @@protoc_insertion_point(class_scope:agent.TargetToDamageMap)
+  })
+_sym_db.RegisterMessage(TargetToDamageMap)
 
 PlanAssessment = _reflection.GeneratedProtocolMessageType('PlanAssessment', (_message.Message,), {
   'DESCRIPTOR' : _PLANASSESSMENT,
@@ -297,32 +260,13 @@ PlanAssessment = _reflection.GeneratedProtocolMessageType('PlanAssessment', (_me
 _sym_db.RegisterMessage(PlanAssessment)
 
 ActionAssessment = _reflection.GeneratedProtocolMessageType('ActionAssessment', (_message.Message,), {
-
-  'TargetIdToCurrentDamageEntry' : _reflection.GeneratedProtocolMessageType('TargetIdToCurrentDamageEntry', (_message.Message,), {
-    'DESCRIPTOR' : _ACTIONASSESSMENT_TARGETIDTOCURRENTDAMAGEENTRY,
-    '__module__' : 'agent_pb2'
-    # @@protoc_insertion_point(class_scope:agent.ActionAssessment.TargetIdToCurrentDamageEntry)
-    })
-  ,
-
-  'TargetIdToDesiredDamageEntry' : _reflection.GeneratedProtocolMessageType('TargetIdToDesiredDamageEntry', (_message.Message,), {
-    'DESCRIPTOR' : _ACTIONASSESSMENT_TARGETIDTODESIREDDAMAGEENTRY,
-    '__module__' : 'agent_pb2'
-    # @@protoc_insertion_point(class_scope:agent.ActionAssessment.TargetIdToDesiredDamageEntry)
-    })
-  ,
   'DESCRIPTOR' : _ACTIONASSESSMENT,
   '__module__' : 'agent_pb2'
   # @@protoc_insertion_point(class_scope:agent.ActionAssessment)
   })
 _sym_db.RegisterMessage(ActionAssessment)
-_sym_db.RegisterMessage(ActionAssessment.TargetIdToCurrentDamageEntry)
-_sym_db.RegisterMessage(ActionAssessment.TargetIdToDesiredDamageEntry)
 
 
-_OPERATINGPICTURE_TARGETIDTODAMAGEENTRY._options = None
-_ACTIONASSESSMENT_TARGETIDTOCURRENTDAMAGEENTRY._options = None
-_ACTIONASSESSMENT_TARGETIDTODESIREDDAMAGEENTRY._options = None
 
 _AGENT = _descriptor.ServiceDescriptor(
   name='Agent',
@@ -331,8 +275,8 @@ _AGENT = _descriptor.ServiceDescriptor(
   index=0,
   serialized_options=None,
   create_key=_descriptor._internal_create_key,
-  serialized_start=636,
-  serialized_end=714,
+  serialized_start=494,
+  serialized_end=572,
   methods=[
   _descriptor.MethodDescriptor(
     name='GetPlanAssessment',

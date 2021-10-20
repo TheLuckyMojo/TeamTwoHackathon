@@ -13,7 +13,16 @@ message OperatingPicture {
   // Number of missiles to potentially allocate.
   int32 numMissiles = 1;
   // Target ID to corresponding desired damage outcome.
-  map<string, int32> targetIdToDamage = 2;
+  TargetToDamageMap targetIdToDamage = 2;
+}
+
+message TargetIdToDamageEntry {
+  string id = 1;
+  int32 damage = 2;
+}
+
+message TargetToDamageMap {
+  repeated TargetIdToDamageEntry entries = 1;
 }
 
 // Generated overall plan/assessment.
@@ -29,7 +38,7 @@ message ActionAssessment {
   // Number of missiles at this action interval.
   int32 numMissilesLeft = 2;
   // Target ID to corresponding damage at this action interval.
-  map<string, int32> targetIdToCurrentDamage = 3;
+  TargetToDamageMap targetIdToCurrentDamage = 3;
   // Target ID to corresponding desired damage outcome.
-  map<string, int32> targetIdToDesiredDamage = 4;
+  TargetToDamageMap targetIdToDesiredDamage = 4;
 }
